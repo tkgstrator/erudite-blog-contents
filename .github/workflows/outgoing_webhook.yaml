@@ -1,0 +1,15 @@
+name: Notify Main Repository
+on:
+  push:
+    branches: [ master, main ]
+jobs:
+  notify:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Notify main repository
+        run: |
+          echo "メインリポジトリへの通知処理を実行します"
+          # ここに実際の通知ロジックを追加

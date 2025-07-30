@@ -1,0 +1,35 @@
+name: Extract Frontmatter from Recent Posts
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch: # 手動実行も可能
+    inputs:
+      commit_count:
+        description: '取得するコミット数'
+        required: false
+        default: '20'
+        type: string
+jobs:
+  frontmatter:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+      - name: Install dependencies
+        run: bun install
+      - name: Extract frontmatter from recent commits
+        run: |
+          COMMIT_COUNT="${{ github.event.inputs.commit_count || '10' }}"
+          bun run scripts/extract-frontmatter.js
+      - name: Display summary
+        run: |
+          echo "🎉 frontmatter抽出処理が完了しました!"
+          echo "直近${{ github.event.inputs.commit_count || '10' }}件のコミットで追加されたブログ記事のメタデータを取得済み"
