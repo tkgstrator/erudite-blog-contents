@@ -4,7 +4,7 @@ on:
     branches:
       - master
       - main
-  workflow_call: # 他のワークフローから呼び出し可能にする
+  workflow_call:
     inputs:
       commit_count:
         description: Number of recent commits to analyze for frontmatter
