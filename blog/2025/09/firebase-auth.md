@@ -141,3 +141,49 @@ Hostingされているドメインと認証のドメインが同じなのでIsol
 
 #### カスタムドメインを使っている場合
 
+カスタムドメインを使っている場合にはカスタムドメインを`authDomain`として利用します。
+
+```ts
+const firebaseConfig = {
+  apiKey: "<api-key>",
+  authDomain: "<the-domain-that-serves-your-app>",
+  databaseURL: "<database-url>",
+  projectId: "<project-id>",
+  appId: "<app-id>"
+}
+```
+
+こんなファイルを読み込んでいると思うのですが、`authDomain`のところをカスタムドメインに書き換えます。
+
+その上で、各アプリのコールバックURLあるいはリダイレクトURLを書き換えます。
+
+最初は`https://xxxxxxxxxx.firebaseapp.com/__/auth/handler`みたいなのを設定したと思うのですが、そこを`https://<the-domain-that-serves-your-app>/__/auth/handler`にします。
+
+で、Googleの場合にはちょっとコツが必要で[GCP](https://console.cloud.google.com/auth/clients)から直接変更する必要があります。
+
+**Google Auth Platform > クライアント**で認証済みリダイレクトURIに`https://<the-domain-that-serves-your-app>/__/auth/handler`を追加します。
+
+ついでに承認済みの JavaScript 生成元にもドメインを追加しておきましたが、こちらは必要かどうかわかりません。
+
+Firebase Hostingにデプロイしたファイルにカスタムドメインからアクセスする場合にはこれで動作すると思います。
+
+### 他のホスティングサービスを使っている場合
+
+他のホスティングサービスを使っている場合には上記の対応に追加して[ログイン ヘルパー コードを自社ドメイン内でホストする](https://firebase.google.com/docs/auth/web/redirect-best-practices?hl=ja#self-host-helper-code)が必要になります。
+
+といってもこの対応自体は簡単で、ログインヘルパーコードはパブリックなものなのでそれをカスタムドメインにホストするだけです。
+
+`public/__/auth`と`public/__/firebase`のディレクトリを作成し、
+
+```zsh
+https://<project>.firebaseapp.com/__/auth/handler
+https://<project>.firebaseapp.com/__/auth/handler.js
+https://<project>.firebaseapp.com/__/auth/experiments.js
+https://<project>.firebaseapp.com/__/auth/iframe
+https://<project>.firebaseapp.com/__/auth/iframe.js
+https://<project>.firebaseapp.com/__/firebase/init.json
+```
+
+これらのファイルをダウンロードして配置するだけです。`authDomain`がちゃんと切り替わっていれば、ログインしようとするとカスタムドメインが開き、カスタムドメインを経由して認証が実行されます。
+
+この場合、ホスティングしているオリジンと認証用のオリジンが同じのためIsolatedであることは問題になりません。
