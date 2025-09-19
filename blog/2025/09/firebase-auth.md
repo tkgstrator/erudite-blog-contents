@@ -97,6 +97,11 @@ Firebase Hostingの場合には上のように設定すれば有効になりま�
 
 ただ、色々やったのでごっちゃになっている可能性があります、ご了承ください。
 
+> [Shared Array Buffer in firebase using CORS headers](https://stackoverflow.com/questions/77996714/shared-array-buffer-in-firebase-using-cors-headers)
+> [ホスティング動作を構成する](https://firebase.google.com/docs/hosting/full-config?hl=ja)
+> [COEP/COOP headers break Google OAuth (multi-threaded WASM)](https://github.com/firebase/flutterfire/issues/12819)
+> [Firebase auth hangs at the auth route, then returns with no success or error message](https://github.com/firebase/firebase-js-sdk/issues/6199)
+
 ### Firebase Hostingを利用する場合
 
 前述したIsolatedな状態にするための設定を`firebase.json`に書き込むだけです。
