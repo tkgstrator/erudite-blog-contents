@@ -51,3 +51,7 @@ VercelとCloudflare Pagesの両方の問題を解決するのがコレです。
 | Vercel             | SSR, SSG, CSR, ISR | ✔           | 高速   | あり               | 
 | Cloudflare Pages   | SSG, CSR           | ✘           | 超高速 | なし               | 
 | Cloudflare Workers | SSR, SSG, CSR      | ✔           | 超高速 | なし               | 
+
+厳密にはCloudflare Pages/Workersにも無料プランでの制限はあるのですが、Web Analysisが使えないとかSpeed Insightsが使えないとかそんなあからさまなものはありません。Vercelに比べれば無料プランでもなんでもできます。
+
+Cloudflare Workersでウェブサイトをホスティングする最大の理由は「バックエンドも同時にデプロイできる」ということです。Next.jsのSSRは多分そのままでは動かないですが、Honoなどを使ってSSRの仕組みを作ることができます。
