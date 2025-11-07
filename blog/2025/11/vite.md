@@ -54,4 +54,80 @@ VercelとCloudflare Pagesの両方の問題を解決するのがコレです。
 
 厳密にはCloudflare Pages/Workersにも無料プランでの制限はあるのですが、Web Analysisが使えないとかSpeed Insightsが使えないとかそんなあからさまなものはありません。Vercelに比べれば無料プランでもなんでもできます。
 
-Cloudflare Workersでウェブサイトをホスティングする最大の理由は「バックエンドも同時にデプロイできる」ということです。Next.jsのSSRは多分そのままでは動かないですが、Honoなどを使ってSSRの仕組みを作ることができます。
+Cloudflare Workersでウェブサイトをホスティングする最大の理由は「バックエンドも同時にデプロイできる」ということです。Next.jsのSSRは多分そのままでは動かないですが、Honoなどを使ってSSRの仕組みを利用することができます。
+
+ただし、Vercelのバックエンドに比べるとCloudflare Workersができることは限られているので、そこは完全互換とはいかないようです。とはいえ、ブラウザの制約がないので、相当ニッチなことでない限りは大体なんでもできます。
+
+## 環境設定
+
+Cloudflare WorkersにデプロイするときにはWranglerを使うことになるのですが、これは設定ファイルである`wrangler.toml`にいろいろ書き込んでおくことで自動的にドメインやらルートやらを設定できます。
+
+```toml
+name = "tkgstrator.blog"
+main = "src/index.ts"
+compatibility_date = "2025-09-13"
+send_metrics = true
+compatibility_flags = ["nodejs_compat_v2"]
+keep_vars = true
+
+[env.dev]
+name = "tkgstrator.blog"
+logpush = true
+minify = false
+preview_urls = false
+workers_dev = true
+routes = [{ pattern = "blog-dev.tkgstrator.work/api/*", custom_domain = false }]
+
+[env.prod]
+name = "tkgstrator.blog"
+logpush = true
+minify = true
+preview_urls = false
+workers_dev = true
+routes = [{ pattern = "blog.tkgstrator.work/api/*", custom_domain = false }]
+
+[[env.dev.kv_namespaces]]
+binding = "CACHE"
+id = "8271a5e9846b4a389eef6564d5454ea7"
+
+[[env.prod.kv_namespaces]]
+binding = "CACHE"
+id = "8271a5e9846b4a389eef6564d5454ea7"
+
+[env.dev.observability]
+enabled = true
+
+[env.prod.observability]
+enabled = true
+
+[env.dev.observability.logs]
+enabled = true
+
+[env.prod.observability.logs]
+enabled = true
+
+[dev]
+ip = "0.0.0.0"
+port = 8787
+inspector_port = 9230
+```
+
+これはあくまで一例ですが、`env.***`のプレフィックスを付けることで、環境ごとに設定を切り分けておくことができます。
+
+```zsh
+wrangler deploy --env dev
+```
+
+そしてデプロイするときに`--env ***`をつけることでその環境でデプロイすることができるわけです、便利ですね。
+
+これを自由に変更したい場合には、
+
+```zsh
+wrangler deploy --env ${CLOUDFLARE_ENV:-dev}
+```
+
+のように`package.json`に書いておくと便利です。
+
+### Vite
+
+ところが、Vite+ReactをWranglerでデプロイしようとすると、その前段階のビルドの時点でコケます。
