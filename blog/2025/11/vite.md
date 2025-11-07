@@ -148,3 +148,5 @@ export default defineConfig(({ mode }) => {
   "deploy": "wrangler deploy"
 },
 ```
+
+こんな感じで先ほどとは違い`wrangler deploy`には引数を渡さず、`vite build --mode ***`で環境を指定します。ここは`wrangler.toml`で指定されているものを同じものを渡して多分大丈夫です。
