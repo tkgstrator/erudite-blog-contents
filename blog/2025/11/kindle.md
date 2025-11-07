@@ -1,6 +1,6 @@
 ---
 title: Kindleの電子書籍について
-date: 2025-11−07
+date: 2025-11-07
 description: いっぱい形式があるけど、実際何なんでしょう
 tags: [Kindle, Amazon]
 authors: ['tkgstrator']
