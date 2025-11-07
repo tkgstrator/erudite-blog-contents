@@ -131,3 +131,20 @@ wrangler deploy --env ${CLOUDFLARE_ENV:-dev}
 ### Vite
 
 ところが、Vite+ReactをWranglerでデプロイしようとすると、その前段階のビルドの時点でコケます。
+
+詳しくは[Cloudflare Environments](https://developers.cloudflare.com/workers/vite-plugin/reference/cloudflare-environments/)に書いてあるのですが、Vite+Reactのプロジェクトをビルドする場合には、環境変数はWranglerではなくViteを経由して`vite.config.ts`に渡す必要があります。
+
+```ts
+export default defineConfig(({ mode }) => {
+})
+```
+
+渡された環境変数は`mode`に入るので、ビルド時に`mode`が渡るように修正します。
+
+```json
+"scripts": {
+  "dev": "bun --bunx vite --host",
+  "build": "tsc -b && vite build --mode ${CLOUDFLARE_ENV:-dev}",
+  "deploy": "wrangler deploy"
+},
+```
