@@ -150,3 +150,6 @@ export default defineConfig(({ mode }) => {
 ```
 
 こんな感じで先ほどとは違い`wrangler deploy`には引数を渡さず、`vite build --mode ***`で環境を指定します。ここは`wrangler.toml`で指定されているものを同じものを渡して多分大丈夫です。
+
+この場合だと`CLOUDFLARE_ENV`の値を使ってデプロイするので、GitHub Actionsなどでdevelopブランチなら`dev`、masterブランチなら`prod`が渡るように設定しておけば、developやmasterにマージしたときに対応する環境変数でデプロイできます。
+
