@@ -45,3 +45,9 @@ Cloudflareが運営するホスティングサービスでめちゃくちゃ速�
 #### Cloudfalre Workers
 
 VercelとCloudflare Pagesの両方の問題を解決するのがコレです。
+
+| サービス           | Next.js            | バックエンド | 速度   | 無料プランでの制限 | 
+| ------------------ | :----------------- | ------------ | ------ | ------------------ | 
+| Vercel             | SSR, SSG, CSR, ISR | ✔           | 高速   | あり               | 
+| Cloudflare Pages   | SSG, CSR           | ✘           | 超高速 | なし               | 
+| Cloudflare Workers | SSR, SSG, CSR      | ✔           | 超高速 | なし               | 
