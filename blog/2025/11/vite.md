@@ -86,26 +86,6 @@ preview_urls = false
 workers_dev = true
 routes = [{ pattern = "blog.tkgstrator.work/api/*", custom_domain = false }]
 
-[[env.dev.kv_namespaces]]
-binding = "CACHE"
-id = "8271a5e9846b4a389eef6564d5454ea7"
-
-[[env.prod.kv_namespaces]]
-binding = "CACHE"
-id = "8271a5e9846b4a389eef6564d5454ea7"
-
-[env.dev.observability]
-enabled = true
-
-[env.prod.observability]
-enabled = true
-
-[env.dev.observability.logs]
-enabled = true
-
-[env.prod.observability.logs]
-enabled = true
-
 [dev]
 ip = "0.0.0.0"
 port = 8787
@@ -153,3 +133,8 @@ export default defineConfig(({ mode }) => {
 
 この場合だと`CLOUDFLARE_ENV`の値を使ってデプロイするので、GitHub Actionsなどでdevelopブランチなら`dev`、masterブランチなら`prod`が渡るように設定しておけば、developやmasterにマージしたときに対応する環境変数でデプロイできます。
 
+## まとめ
+
+Cloudflare Workersが便利すぎてつらい。
+
+記事は以上。
