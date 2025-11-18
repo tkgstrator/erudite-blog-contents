@@ -2,6 +2,7 @@
   "customizations": {
     "vscode": {
       "extensions": [
+        "WakaTime.vscode-wakatime",
         "EditorConfig.EditorConfig",
         "GitHub.copilot",
         "GitHub.copilot-chat",
@@ -73,6 +74,9 @@
     },
     "ghcr.io/dhoeric/features/act:1": {},
     "ghcr.io/shyim/devcontainers-features/bun:0": {}
+  },
+  "remoteEnv": {
+    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
   },
   "mounts": [
     "source=${env:HOME}/home/vscode/.ssh,target=/.ssh,type=bind,consistency=cached,readonly"
