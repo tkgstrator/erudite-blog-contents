@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Bluesky Workflow with act",
+      "type": "shell",
+      "command": "act -W .github/workflows/post_bluesky.yaml --secret-file .env",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Run Bluesky Workflow with act (push event)",
+      "type": "shell",
+      "command": "act push -W .github/workflows/post_bluesky.yaml --secret-file .env",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "Run Bluesky Workflow with act (workflow_call)",
+      "type": "shell",
+      "command": "act workflow_call -W .github/workflows/post_bluesky.yaml --secret-file .env --input frontmatters='{}'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      }
+    }
+  ]
+}
