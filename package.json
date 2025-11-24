@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@atproto/api": "^0.18.3",
+    "@biomejs/biome": "^2.3.7",
     "gray-matter": "^4.0.3"
   }
 }
