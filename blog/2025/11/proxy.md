@@ -66,4 +66,29 @@ Cloudflare Workersを使っていく以上は、認証はHTTP Only(Secure)なCoo
 
 そこで、なんでちゃんと開発環境で動かないのか調べてみることにしました。
 
-### 
+## 結果
+
+調べた結果、この認証方式が開発環境で動かないのはオリジンの違いが問題だということがわかりました。
+
+実際にやってないのでそれで上手くいくのかはわからないのですが、`SameSite=None; Secure`をつけないと行けないらしいです。また、開発環境はHTTPSでは動いていないので`Secure`をつけているのも良くないとかなんとか。
+
+まあ、最終的に何が悪いのかはよくわからないのですがポートが違うとCORS等の問題とは違うところで引っかかるみたいです。
+
+### 対応方法
+
+```ts
+export default defineConfig(({ mode }) => {
+  return {
+    server: {
+      port: 5173,
+      proxy: {
+        '/api': {
+          target: 'http://localhost:8787',
+          changeOrigin: true,
+          secure: false
+        }
+      }
+    },
+  }
+})
+```
