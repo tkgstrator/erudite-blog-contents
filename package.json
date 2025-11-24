@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@atproto/api": "^0.16.0",
+    "@atproto/api": "^0.18.3",
     "gray-matter": "^4.0.3"
   }
 }

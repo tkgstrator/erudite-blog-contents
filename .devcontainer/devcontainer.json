@@ -15,6 +15,7 @@
         "bradlc.vscode-tailwindcss",
         "eamodio.gitlens",
         "ms-vscode.vscode-typescript-next",
+        "spmeesseman.vscode-taskexplorer",
         "tamasfe.even-better-toml",
         "vsls-contrib.gitdoc"
       ],
