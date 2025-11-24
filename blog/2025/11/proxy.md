@@ -76,6 +76,8 @@ Cloudflare Workersを使っていく以上は、認証はHTTP Only(Secure)なCoo
 
 ### 対応方法
 
+`vite.config.ts`で開発環境ではNode.jsを利用してプロクシを通すようにします。
+
 ```ts
 export default defineConfig(({ mode }) => {
   return {
@@ -92,3 +94,13 @@ export default defineConfig(({ mode }) => {
   }
 })
 ```
+
+こうすることで本来Viteのドメインである`localhost:5173/api`にアクセスすると`localhost:8787/api`にとばされるので、オリジンの違いを吸収することができます。よって、api側から実行した`setCookie`のようなメソッドがちゃんと動くようになります。
+
+## まとめ
+
+これで、開発環境でステージングの環境に接続せずに、完全に切り離された環境で作業できるようになりました。
+
+今まで何してたんだって感じですね。
+
+記事は以上。
