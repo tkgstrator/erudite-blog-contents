@@ -13,4 +13,45 @@ authors: ['tkgstrator']
 Cloudflare Workers的には[Monorepos](https://developers.cloudflare.com/workers/ci-cd/builds/advanced-setups/)にあるようにモノレポでの開発を結構考慮してくれているようなので、できればその便利な機能を利用したいと思います。
 
 ```zsh
+.
+├── .devcontainer/
+│   ├── devcontainer.json
+│   ├── Dockerfile
+│   └── compose.yaml
+├── workers/
+│   ├── api
+│   └── app
+├── turbo.json
+├── package.json
+└── tsconfig.json
 ```
+
+大雑把な構成はこんな感じです。
+
+このとき、ソースコードの全体はworkers以下にあり、全体で使うパッケージをpackage.jsonに記述しておく感じです。
+
+### Proxy
+
+フロントエンドからバックエンドにアクセスするときにブラウザ経由でアクセスするとCORSが問題になってきます。
+
+Cloudflare Workers自体はSSRをサポートしているのでapp自体に実装してもいいのですが、結局最終的に何処かにバックエンドのコードを書く必要があるので、自分の場合にはバックエンドのコードは全てapi側に書いています。
+
+こうやって完全に分けておくことでapp側で`VITE_`のプレフィックスを付けたりして環境変数を切り分けなくていいのがポイントです。ちなみに、app側でほとんど環境変数は利用しない設計になっています。
+
+ステージング環境以上ではapiとappは同一のドメインで動くことになるのですが、開発中はappはlocalhost:5173、apiはlocalhost:8787などのようにポートが異なる場合が多いです。
+
+ただし、localhostはポートが違ってもCORSが問題にならないので、ステージングのドメインが同じであれば開発環境において基本的にこのポートの違いが問題になることはないだろう、と考えていました。
+
+が、ここに大きなミスがありました。
+
+#### Cookie
+
+app側で認証を使う場合、HTTP OnlyなCookieを利用するのが個人的に最適解と考えています。
+
+以下、その理由。
+
+1. HTTP OnlyなCookieはブラウザのJavaScriptから読み込むことができず、XSSに対する耐性が強い
+2. Cookieは自動でリクエストヘッダーに付与されるため、クライアント側から認証を明示的に指定する必要がない
+3. Secure + SameSiteでCSRF対策が取りやすく、CSRFトークンの仕組みが不要
+
+これらの点はBearer Tokenなどを使う場合だとどこに保存するかなどで困るような問題が発生しないので、開発者としてはとても気が楽です。サーバーサイドでセッションを管理することもできますが、Cloudflare Workersとは相性が良くないです。
