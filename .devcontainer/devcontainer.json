@@ -77,10 +77,12 @@
     "ghcr.io/shyim/devcontainers-features/bun:0": {}
   },
   "remoteEnv": {
-    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
+    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}",
+    "GPG_TTY": "/dev/pts/0"
   },
   "mounts": [
-    "source=${env:HOME}/home/vscode/.ssh,target=/.ssh,type=bind,consistency=cached,readonly"
+    "source=${env:HOME}/home/vscode/.ssh,target=/.ssh,type=bind,consistency=cached,readonly",
+    "source=${env:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
   ],
   "name": "Under+Ground Contents",
   "postAttachCommand": "/bin/sh .devcontainer/postAttachCommand.sh",
