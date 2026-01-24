@@ -57,7 +57,7 @@
       }
     }
   },
-  "dockerComposeFile": ["docker-compose.yaml"],
+  "dockerComposeFile": ["compose.yaml"],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "configureZshAsDefaultShell": true
@@ -77,12 +77,10 @@
     "ghcr.io/shyim/devcontainers-features/bun:0": {}
   },
   "remoteEnv": {
-    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}",
-    "GPG_TTY": "/dev/pts/0"
+    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
   },
   "mounts": [
-    "source=${env:HOME}/home/vscode/.ssh,target=/.ssh,type=bind,consistency=cached,readonly",
-    "source=${env:HOME}/.gnupg,target=/home/vscode/.gnupg,type=bind,consistency=cached"
+    "source=${env:HOME}/home/vscode/.ssh,target=/.ssh,type=bind,consistency=cached,readonly"
   ],
   "name": "Under+Ground Contents",
   "postAttachCommand": "/bin/sh .devcontainer/postAttachCommand.sh",
