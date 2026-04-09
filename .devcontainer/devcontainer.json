@@ -57,7 +57,7 @@
       }
     }
   },
-  "dockerComposeFile": ["docker-compose.yaml"],
+  "dockerComposeFile": ["compose.yaml"],
   "features": {
     "ghcr.io/devcontainers/features/common-utils:2": {
       "configureZshAsDefaultShell": true
