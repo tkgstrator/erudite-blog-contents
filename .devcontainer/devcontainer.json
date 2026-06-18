@@ -4,20 +4,15 @@
       "extensions": [
         "WakaTime.vscode-wakatime",
         "EditorConfig.EditorConfig",
-        "GitHub.copilot",
-        "GitHub.copilot-chat",
         "PKief.material-icon-theme",
         "antfu.file-nesting",
         "astro-build.astro-vscode",
-        "bierner.markdown-mermaid",
         "bierner.markdown-preview-github-styles",
         "biomejs.biome",
         "bradlc.vscode-tailwindcss",
-        "eamodio.gitlens",
         "ms-vscode.vscode-typescript-next",
         "spmeesseman.vscode-taskexplorer",
-        "tamasfe.even-better-toml",
-        "vsls-contrib.gitdoc"
+        "tamasfe.even-better-toml"
       ],
       "settings": {
         "[javascript]": {
@@ -78,7 +73,9 @@
     "ghcr.io/shyim/devcontainers-features/bun:0": {}
   },
   "remoteEnv": {
-    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
+    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}",
+    "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+    "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}"
   },
   "containerEnv": {
     "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
