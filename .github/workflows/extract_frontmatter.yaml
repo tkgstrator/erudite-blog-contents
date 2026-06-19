@@ -10,14 +10,14 @@ on:
         description: Number of recent commits to analyze for frontmatter
         required: false
         default: 1
-        type: number 
+        type: number
     outputs:
       frontmatters:
         description: The list of frontmatter extracted from recent commits
         value: ${{ jobs.frontmatter.outputs.frontmatters }}
 jobs:
   frontmatter:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     outputs:
       frontmatters: ${{ steps.extract.outputs.frontmatters }}
     steps:
