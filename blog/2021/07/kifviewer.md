@@ -4,6 +4,7 @@ date: 2021-08-01
 description: HTML5で駒を動かせるKifuViewerをVuepressで対応させるまでの流れを解説
 tags: [Shogi]
 authors: ['tkgstrator']
+draft: true
 ---
 
 # KifuViewer

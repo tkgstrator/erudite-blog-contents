@@ -4,6 +4,7 @@ date: 2021-06-04
 description: Xcodeで環境変数を読み込むための方法についていくつかのパターンに分けて解説します
 tags: [Swift]
 authors: ['tkgstrator']
+draft: true
 ---
 
 # Xcode で環境変数を利用する意味

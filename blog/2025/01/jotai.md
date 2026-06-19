@@ -4,6 +4,7 @@ date: 2025-01-25
 description: Reactにおける状態管理がわかりません
 tags: [Vite, React, Jotai]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 背景

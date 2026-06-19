@@ -4,6 +4,7 @@ date: 2023-11-26
 description: Frida Playgroundを使ってアプリの動的解析の実戦経験を積んでみました
 tags: [macOS, iOS, Jailbreak, Frida]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## Frida Playground

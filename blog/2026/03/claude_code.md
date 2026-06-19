@@ -4,6 +4,7 @@ date: 2026-03-20
 description: コンテナ内でClaude Codeを使うとちょっとめんどくさかったので解決法についてまとめる 
 tags: [Docker, Dev Container, Claude Code, VSCode]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 背景

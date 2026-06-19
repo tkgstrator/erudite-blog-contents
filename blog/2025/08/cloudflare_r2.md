@@ -4,6 +4,7 @@ date: 2025-08-03
 description: S3なら消そうと思ったらすぐ消せるのに、R2はありがたい保護機能がついています
 tags: [Cloudflare, R2, S3]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 背景

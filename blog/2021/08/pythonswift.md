@@ -4,6 +4,7 @@ date: 2021-08-15
 description: SwiftのアプリケーションにPythonプログラムを組み込むことはできるのか挑戦してみました
 tags: [Swift, Python, Xcode]
 authors: ['tkgstrator']
+draft: true
 ---
 
 # Python + Swift

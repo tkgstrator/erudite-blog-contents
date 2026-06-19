@@ -4,6 +4,7 @@ date: 2021-04-28
 description: Nintendo Switchの改造についてのドキュメントです
 tags: [Nintendo Switch, CFW]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## Nintendo Switch Hack

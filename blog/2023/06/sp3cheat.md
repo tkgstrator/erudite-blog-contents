@@ -4,6 +4,7 @@ date: 2023-06-20
 description: IPSwitch向けのパッチを確かめてみることにしました
 tags: [Splatoon3, IPSwitch]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## IPSwitch

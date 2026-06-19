@@ -4,6 +4,7 @@ date: 2026-05-13
 description: Claude CodeだったりCodexだったりいろいろCLIを使い分けるのがめんどくさいですよね 
 tags: [Claude, Codex]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## LiteLLM

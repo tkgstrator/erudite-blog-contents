@@ -4,6 +4,7 @@ date: 2023-07-21
 description: クロスコンパイルに対応しているIonicのモーダルについて理解を深めます
 tags: []
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 背景
