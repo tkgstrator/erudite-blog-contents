@@ -1,4 +1,7 @@
 {
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+  },
   "customizations": {
     "vscode": {
       "extensions": [
@@ -68,17 +71,9 @@
     "ghcr.io/devcontainers/features/node:1.5.0": {
       "version": "24.4.0"
     },
-    "ghcr.io/stu-bell/devcontainer-features/claude-code:0": {},
     "ghcr.io/dhoeric/features/act:1": {},
-    "ghcr.io/shyim/devcontainers-features/bun:0": {}
-  },
-  "remoteEnv": {
-    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}",
-    "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
-    "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}"
-  },
-  "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+    "ghcr.io/shyim/devcontainers-features/bun:0": {},
+    "ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
   },
   "mounts": [
     "source=${env:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached,readonly",
@@ -88,6 +83,11 @@
   "name": "Under+Ground Contents",
   "postAttachCommand": "/bin/sh .devcontainer/postAttachCommand.sh",
   "postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
+  "remoteEnv": {
+    "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
+    "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
+  },
   "remoteUser": "vscode",
   "service": "app",
   "shutdownAction": "stopCompose",
