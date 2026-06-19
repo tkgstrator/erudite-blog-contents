@@ -92,7 +92,7 @@ jobs:
   pr_agent_job:
     name: Code review
     if: ${{ github.event.sender.type != 'Bot' }}
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     permissions:
       issues: write
       pull-requests: write
@@ -136,7 +136,7 @@ on:
 jobs:
   lockfile:
     name: Lockfile
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -150,7 +150,7 @@ jobs:
   commitlint:
     name: CommitLint
     if: github.event.action != 'closed' || github.event.pull_request.merged != true
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -170,7 +170,7 @@ jobs:
         run: bunx commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
   check:
     name: Code Check
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     if: github.event.action != 'closed' || github.event.pull_request.merged != true
     steps:
       - name: Checkout

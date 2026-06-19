@@ -33,7 +33,7 @@ on:
       - main
 jobs:
   notify:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v3
@@ -72,7 +72,7 @@ on:
 jobs:
   deploy:
     name: Deploy to Vercel
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4

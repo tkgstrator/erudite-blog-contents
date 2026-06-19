@@ -20,7 +20,7 @@ VercelがNext.jsとの親和性が非常に高いため、最近愛用してい�
 
 VercelのプランにはHobby、Pro、Enterpriseとあるのですがほとんど全てのユーザーはHobbyかProのどっちかだと思います。
 
-Cloudflare WorkersとかだとPaidプランにしても $5 とかだったので、VercelのProプランが $20 なのはやたらと強気に感じます。月額3000円ほどで、年間だと36000円もするのでAppleの開発者アカウントの三倍くらいかかるわけです。
+Cloudflare WorkersとかだとPaidプランにしても \$5 とかだったので、VercelのProプランが \$20 なのはやたらと強気に感じます。月額3000円ほどで、年間だと36000円もするのでAppleの開発者アカウントの三倍くらいかかるわけです。
 
 よっぽどVercelに依存している、それこそ既存のCloudflareで使っているサービスを全部Vercelに移行するなら考えてもいい値段ですが、現在はPagesの代わりとしてだけ使っているのでそこまでの価値が見いだせていません。
 
@@ -74,7 +74,7 @@ on:
 jobs:
   deploy:
     name: Vercel
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -121,7 +121,7 @@ https://github.com/nektos/act
 
 このコマンドでローカルでGitHub Actionsを実行し、あたかもウェブ上からWorkflowを実行したかのような効果が得られます。
 
-`act -j deploy --eventpath .github/workflow_dispatch.json --secret-file .secrets --platform ubuntu-24.04=catthehacker/ubuntu:act-22.04`
+`act -j deploy --eventpath .github/workflow_dispatch.json --secret-file .secrets --platform ubuntu-latest=catthehacker/ubuntu:act-22.04`
 
 このとき、`.secrets`にVercelへアクセスするための情報を書き込んでおく必要があります。
 
