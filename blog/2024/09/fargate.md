@@ -4,6 +4,7 @@ date: 2024-09-24
 description: Fargateを使って困ったことなどのメモ
 tags: [AWS, Fargate, ECS, ECR]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## FargateでServerlessを動かすまで

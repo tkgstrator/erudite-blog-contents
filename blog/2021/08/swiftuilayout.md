@@ -4,6 +4,7 @@ date: 2021-08-19
 description: SwiftUIでデバイスや傾きごとにレイアウトを変更したい場合のコーディングについて学びます
 tags: [Swift, SwiftUI]
 authors: ['tkgstrator']
+draft: true
 ---
 
 # SwiftUI でのレイアウト

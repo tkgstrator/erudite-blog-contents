@@ -4,6 +4,7 @@ date: 2023-01-23
 description: 最近話題だった作品をプレイしてみました、ネタバレもあるよ
 tags: []
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## シロナガス島への帰還

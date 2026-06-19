@@ -4,6 +4,7 @@ date: 2023-11-26
 description: frida-traceの使い方や解析したいアプリの構成について解説します
 tags: [macOS, iOS, Jailbreak]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 背景

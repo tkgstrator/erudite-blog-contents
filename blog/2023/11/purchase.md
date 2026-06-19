@@ -4,6 +4,7 @@ date: 2023-11-17
 description: 何にどのくらいお金を使っているのかわからなくなってきたのでメモすることにしました
 tags: []
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 動画配信サービス

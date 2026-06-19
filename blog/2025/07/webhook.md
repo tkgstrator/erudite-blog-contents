@@ -4,6 +4,7 @@ date: 2025-07-30
 description: BlueSkyなどのSNSに投稿したくないですか
 tags: [GitHub, GitHub Actions, BlueSky]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 概要

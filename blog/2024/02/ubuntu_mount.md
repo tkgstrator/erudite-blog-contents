@@ -4,6 +4,7 @@ date: 2024-02-05
 description: Stable Diffusionで大量の生成データがSSDを圧迫する問題と、外部HDDの活用方法について解説します
 tags: [Ubuntu, Stable Diffusion]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 概要

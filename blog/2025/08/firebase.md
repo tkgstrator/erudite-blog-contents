@@ -4,6 +4,7 @@ date: 2025-08-21
 description: FirebaseでiOSアプリの利用者を調査します 
 tags: [Swift, Xcode, Firebase]
 authors: ['tkgstrator']
+draft: true
 ---
 
 ## 概要
