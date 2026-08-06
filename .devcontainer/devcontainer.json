@@ -5,9 +5,9 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "WakaTime.vscode-wakatime",
         "EditorConfig.EditorConfig",
         "PKief.material-icon-theme",
+        "WakaTime.vscode-wakatime",
         "antfu.file-nesting",
         "astro-build.astro-vscode",
         "bierner.markdown-preview-github-styles",
