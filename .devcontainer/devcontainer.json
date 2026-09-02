@@ -1,95 +1,64 @@
 {
-  "containerEnv": {
-    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "EditorConfig.EditorConfig",
-        "PKief.material-icon-theme",
-        "WakaTime.vscode-wakatime",
-        "antfu.file-nesting",
-        "astro-build.astro-vscode",
-        "bierner.markdown-preview-github-styles",
-        "biomejs.biome",
-        "bradlc.vscode-tailwindcss",
-        "ms-vscode.vscode-typescript-next",
-        "spmeesseman.vscode-taskexplorer",
-        "tamasfe.even-better-toml"
-      ],
-      "settings": {
-        "[javascript]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "[javascriptreact]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "[json]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "[jsonc]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "[typescript]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "[typescriptreact]": {
-          "editor.defaultFormatter": "biomejs.biome"
-        },
-        "betterTypeScriptErrors.prettify": true,
-        "debug.internalConsoleOptions": "neverOpen",
-        "diffEditor.diffAlgorithm": "advanced",
-        "diffEditor.experimental.showMoves": true,
-        "diffEditor.renderSideBySide": false,
-        "editor.codeActionsOnSave": {
-          "quickfix.biome": "explicit",
-          "source.organizeImports.biome": "explicit"
-        },
-        "editor.formatOnPaste": true,
-        "editor.formatOnSave": true,
-        "editor.guides.bracketPairs": "active",
-        "files.watcherExclude": {
-          "**/node_modules/**": true
-        },
-        "scm.defaultViewMode": "tree"
-      }
-    }
-  },
-  "dockerComposeFile": ["compose.yaml"],
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {
-      "configureZshAsDefaultShell": true
-    },
-    "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-      "dockerDashComposeVersion": "v2",
-      "moby": false
-    },
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "2.50.1"
-    },
-    "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/node:1.5.0": {
-      "version": "24.4.0"
-    },
-    "ghcr.io/dhoeric/features/act:1": {},
-    "ghcr.io/shyim/devcontainers-features/bun:0": {},
-    "ghcr.io/stu-bell/devcontainer-features/claude-code:0": {}
-  },
-  "mounts": [
-    "source=${env:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached,readonly",
-    "source=${env:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached",
-    "source=${env:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly"
-  ],
-  "name": "Under+Ground Contents",
-  "postAttachCommand": "/bin/sh .devcontainer/postAttachCommand.sh",
-  "postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
-  "remoteEnv": {
-    "ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
-    "ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
-    "WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
-  },
-  "remoteUser": "vscode",
-  "service": "app",
-  "shutdownAction": "stopCompose",
-  "workspaceFolder": "/home/vscode/app"
+	"name": "Under+Ground Contents",
+	"dockerComposeFile": ["compose.yaml"],
+	"service": "app",
+	"workspaceFolder": "/home/vscode/app",
+	"shutdownAction": "stopCompose",
+	"remoteUser": "vscode",
+	"remoteEnv": {
+		"ANTHROPIC_BASE_URL": "${localEnv:ANTHROPIC_BASE_URL}",
+		"ANTHROPIC_AUTH_TOKEN": "${localEnv:ANTHROPIC_AUTH_TOKEN}",
+		"WAKATIME_API_KEY": "${localEnv:WAKATIME_API_KEY}"
+	},
+	"containerEnv": {
+		"CLAUDE_CONFIG_DIR": "/home/vscode/.claude"
+	},
+	"mounts": [
+		"source=${localEnv:HOME}/.aws,target=/home/vscode/.aws,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.claude,target=/home/vscode/.claude,type=bind,consistency=cached",
+		"source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,type=bind,consistency=cached,readonly",
+		"source=${localEnv:HOME}/.config/gh,target=/home/vscode/.config/gh,type=bind,consistency=cached,readonly"
+	],
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"configureZshAsDefaultShell": true
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/shyim/devcontainers-features/bun:0": {},
+		"ghcr.io/devcontainers/features/node:1.5.0": {
+			"version": "26.5.0"
+		},
+		"ghcr.io/stu-bell/devcontainer-features/claude-code:0": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
+			"moby": false,
+			"dockerDashComposeVersion": "v2"
+		},
+		"ghcr.io/dhoeric/features/act:1": {},
+		"ghcr.io/devcontainers-community/features/direnv:1": {},
+		"ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+			"packages": "git-filter-repo"
+		}
+	},
+	"postAttachCommand": "/bin/sh .devcontainer/postAttachCommand.sh",
+	"postCreateCommand": "/bin/sh .devcontainer/postCreateCommand.sh",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"EditorConfig.EditorConfig",
+				"PKief.material-icon-theme",
+				"WakaTime.vscode-wakatime",
+				"antfu.file-nesting",
+				"bierner.github-markdown-preview",
+				"bierner.markdown-preview-github-styles",
+				"biomejs.biome",
+				"ms-vscode.vscode-typescript-next",
+				"redhat.vscode-yaml",
+				"spmeesseman.vscode-taskexplorer",
+				"tamasfe.even-better-toml"
+			],
+			"settings": {}
+		}
+	}
 }
