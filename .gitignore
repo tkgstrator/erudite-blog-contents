@@ -268,3 +268,6 @@ $RECYCLE.BIN/
 .astro
 # Turborepo
 .turbo
+
+# Local Codex configuration, credentials, and session state.
+/.codex/
