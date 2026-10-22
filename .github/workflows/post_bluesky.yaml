@@ -1,6 +1,7 @@
 name: Post to Bluesky
 on:
   push:
+    paths: [blog/**]
     branches:
       - master
       - main
