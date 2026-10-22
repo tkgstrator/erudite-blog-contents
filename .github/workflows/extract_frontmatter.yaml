@@ -1,6 +1,7 @@
 name: Extract Frontmatter from Recent Posts
 on:
   push:
+    paths: [blog/**]
     branches:
       - master
       - main
